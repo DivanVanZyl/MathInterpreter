@@ -1,4 +1,6 @@
 ﻿using Lexer.Extensions;
+using System.Security.AccessControl;
+using static Lexer.TokenTypes;
 
 namespace Lexer
 {
@@ -12,7 +14,7 @@ namespace Lexer
         }
         public IEnumerable<Token> GenerateTokens()
         {
-            while(_position < _text.Length)
+            while (_position < _text.Length)
             {
                 if (_text[_position].IsWhitespace())
                 {
@@ -30,43 +32,43 @@ namespace Lexer
                     }
                     else if (_text[_position] == '{')
                     {
-                        yield return new Token(TokenTypes.TokenType.OpenBrace, _text[_position++].ToString());
+                        yield return new Token(TokenType.OpenBrace, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '}')
                     {
-                        yield return new Token(TokenTypes.TokenType.CloseBrace, _text[_position++].ToString());
+                        yield return new Token(TokenType.CloseBrace, _text[_position++].ToString());
                     }
                     else if (_text[_position] == ',')
                     {
-                        yield return new Token(TokenTypes.TokenType.Comma, _text[_position++].ToString());
+                        yield return new Token(TokenType.Comma, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '=')
                     {
-                        yield return new Token(TokenTypes.TokenType.Equals, _text[_position++].ToString());
+                        yield return new Token(TokenType.Equals, _text[_position++].ToString());
                     }
                     else if (_text[_position].IsLetter())
                     {
-                        yield return new Token(TokenTypes.TokenType.Variable, _text[_position++].ToString());
+                        yield return new Token(TokenType.Variable, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '∩')
                     {
-                        yield return new Token(TokenTypes.TokenType.Intersect, _text[_position++].ToString());
+                        yield return new Token(TokenType.Intersect, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '∪')
                     {
-                        yield return new Token(TokenTypes.TokenType.Union, _text[_position++].ToString());
+                        yield return new Token(TokenType.Union, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '(')
                     {
-                        yield return new Token(TokenTypes.TokenType.OpenParenthesis, _text[_position++].ToString());
+                        yield return new Token(TokenType.OpenParenthesis, _text[_position++].ToString());
                     }
                     else if (_text[_position] == ')')
                     {
-                        yield return new Token(TokenTypes.TokenType.CloseParenthesis, _text[_position++].ToString());
+                        yield return new Token(TokenType.CloseParenthesis, _text[_position++].ToString());
                     }
                     else
                     {
-                        throw new Exception ("Illegal character: " + _text[_position++]);
+                        throw new Exception("Illegal character: " + _text[_position++]);
                     }
                 }
             }
@@ -79,7 +81,7 @@ namespace Lexer
             {
                 number += _text[_position++].ToString();
             }
-            return new Token(TokenTypes.TokenType.Number,number);
+            return new Token(TokenType.Number, number);
         }
 
         private Token GenerateSetTheoryOperator()
@@ -89,17 +91,17 @@ namespace Lexer
             {
                 operatorText += _text[_position++].ToString();
             }
-            if(operatorText.ToLower() == @"\int" || operatorText.ToLower() == @"\intersect")
+            if (operatorText.ToLower() == @"\int" || operatorText.ToLower() == @"\intersect")
             {
-                return new Token(TokenTypes.TokenType.Intersect, "∩");
+                return new Token(TokenType.Intersect, "∩");
             }
             else if (operatorText.ToLower() == @"\un" || operatorText.ToLower() == @"\union")
             {
-                return new Token(TokenTypes.TokenType.Union, "∪");
+                return new Token(TokenType.Union, "∪");
             }
             else
             {
-                throw new Exception ("Illegal set theory operator: " +  operatorText);
+                throw new Exception("Illegal set theory operator: " + operatorText);
             }
         }
     }
