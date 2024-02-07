@@ -4,7 +4,7 @@ namespace Lexer
 {
     public class SetTheoryLexer : ILexer
     {
-        private string _text;
+        private readonly string _text;
         private int _position = 0;
         public SetTheoryLexer(string text)
         {
@@ -18,7 +18,7 @@ namespace Lexer
                 {
                     yield return GenerateNumber();
                 }
-                if (_text[_position] == '{')
+                else if (_text[_position] == '{')
                 {
                     yield return new Token(TokenTypes.TokenType.OpenBrace, _text[_position++].ToString());
                 }
@@ -40,7 +40,7 @@ namespace Lexer
         private Token GenerateNumber()
         {
             string number = "";
-            while (_text[_position].IsNumber() && _position < _text.Length)
+            while (_position < _text.Length && _text[_position].IsNumber())
             {
                 number += _text[_position++].ToString();
             }

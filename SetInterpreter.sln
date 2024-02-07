@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetInterpreterUI", "SetInte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj", "{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A9CA302-A6CF-4B8B-B0D4-6BD923E0CDAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerTests", "LexerTests\LexerTests.csproj", "{F62594A4-563A-435F-BA94-06B366C4B869}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F62594A4-563A-435F-BA94-06B366C4B869} = {2A9CA302-A6CF-4B8B-B0D4-6BD923E0CDAE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF5C9FFE-1EDF-47DC-9EE8-FDF6AFE5AD1D}

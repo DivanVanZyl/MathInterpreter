@@ -27,6 +27,9 @@ namespace Lexer
         private TokenTypes.TokenType _tokenType;
         private string? _value = null;
 
+        public TokenTypes.TokenType TokenType => _tokenType;
+        public string? Value => _value;
+
         public Token(TokenTypes.TokenType tokenType, string value)
         {
             _tokenType = tokenType;
