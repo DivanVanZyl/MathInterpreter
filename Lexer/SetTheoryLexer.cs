@@ -24,6 +24,10 @@ namespace Lexer
                     {
                         yield return GenerateNumber();
                     }
+                    else if (_text[_position] == '\\')
+                    {
+                        yield return GenerateSetTheoryOperator();
+                    }
                     else if (_text[_position] == '{')
                     {
                         yield return new Token(TokenTypes.TokenType.OpenBrace, _text[_position++].ToString());
@@ -76,6 +80,27 @@ namespace Lexer
                 number += _text[_position++].ToString();
             }
             return new Token(TokenTypes.TokenType.Number,number);
-        }        
+        }
+
+        private Token GenerateSetTheoryOperator()
+        {
+            string operatorText = "";
+            while (_position < _text.Length && (_text[_position].IsLetter() || _text[_position] == '\\'))
+            {
+                operatorText += _text[_position++].ToString();
+            }
+            if(operatorText.ToLower() == @"\int" || operatorText.ToLower() == @"\intersect")
+            {
+                return new Token(TokenTypes.TokenType.Intersect, "∩");
+            }
+            else if (operatorText.ToLower() == @"\un" || operatorText.ToLower() == @"\union")
+            {
+                return new Token(TokenTypes.TokenType.Union, "∪");
+            }
+            else
+            {
+                throw new Exception ("Illegal set theory operator: " +  operatorText);
+            }
+        }
     }
 }
