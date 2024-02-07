@@ -25,9 +25,9 @@ namespace Lexer
     public struct Token
     {
         private TokenTypes.TokenType _tokenType;
-        private char? _value = null;
+        private string? _value = null;
 
-        public Token(TokenTypes.TokenType tokenType, char value)
+        public Token(TokenTypes.TokenType tokenType, string value)
         {
             _tokenType = tokenType;
             _value = value;
