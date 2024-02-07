@@ -14,7 +14,8 @@ namespace LexerTests.SetTheoryLexerTests
         public void SingleNumber()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer("2");
+            string testData = "2";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -22,14 +23,15 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(result.Value, Is.EqualTo("2"));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
 
         [Test]
         public void MultiDigitNumber()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer("256");
+            string testData = "256";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -37,14 +39,15 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(result.Value, Is.EqualTo("256"));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
 
         [Test]
         public void NumberWithDecimal()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer(".");
+            string testData = ".";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -52,7 +55,7 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(result.Value, Is.EqualTo("."));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
     }
 }

@@ -17,7 +17,9 @@ namespace Lexer
             Union,
             OpenParenthesis,
             CloseParenthesis,
-            Comma
+            Comma,
+            Equals,
+            Variable
         }
     }
 

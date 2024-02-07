@@ -12,5 +12,13 @@ namespace Lexer.Extensions
         {
             return Char.IsDigit(c) || c == '.';
         }
+        public static bool IsLetter(this char c)
+        {
+            return Char.IsLetter(c);
+        }
+        public static bool IsWhitespace(this char c)
+        {
+            return Char.IsWhiteSpace(c);
+        }
     }
 }

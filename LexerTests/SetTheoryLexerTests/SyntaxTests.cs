@@ -19,7 +19,8 @@ namespace LexerTests.SetTheoryLexerTests
         public void OpenBrace()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer("{");
+            string testData = "{";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -27,14 +28,15 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.OpenBrace));
-            Assert.That(result.Value, Is.EqualTo("{"));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
         
         [Test]
         public void CloseBrace()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer("}");
+            string testData = "}";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -42,14 +44,15 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.CloseBrace));
-            Assert.That(result.Value, Is.EqualTo("}"));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
 
         [Test]
         public void Comma()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer(",");
+            string testData = ",";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -57,29 +60,31 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(result.Value, Is.EqualTo(","));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
 
         [Test]
         public void Equals()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer("=");
+            string testData = "=";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
             Token result = tokens.FirstOrDefault();
 
             //Assert
-            //Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Equals));
-            Assert.That(result.Value, Is.EqualTo("="));
+            Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Equals));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
 
         [Test]
         public void Variable()
         {
             //Arrange
-            SetTheoryLexer lexer = new SetTheoryLexer("A");
+            string testData = "A";
+            SetTheoryLexer lexer = new SetTheoryLexer(testData);
 
             //Act
             var tokens = lexer.GenerateTokens();
@@ -87,7 +92,7 @@ namespace LexerTests.SetTheoryLexerTests
 
             //Assert
             //Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Equals));
-            Assert.That(result.Value, Is.EqualTo("A"));
+            Assert.That(result.Value, Is.EqualTo(testData));
         }
     }
 }

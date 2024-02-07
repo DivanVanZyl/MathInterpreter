@@ -14,25 +14,56 @@ namespace Lexer
         {
             while(_position < _text.Length)
             {
-                if (Char.IsDigit(_text[_position]) || _text[_position] == '.')
+                if (_text[_position].IsWhitespace())
                 {
-                    yield return GenerateNumber();
-                }
-                else if (_text[_position] == '{')
-                {
-                    yield return new Token(TokenTypes.TokenType.OpenBrace, _text[_position++].ToString());
-                }
-                else if (_text[_position] == '}')
-                {
-                    yield return new Token(TokenTypes.TokenType.CloseBrace, _text[_position++].ToString());
-                }
-                else if (_text[_position] == ',')
-                {
-                    yield return new Token(TokenTypes.TokenType.Comma, _text[_position++].ToString());
+                    _position++;
                 }
                 else
                 {
-                    throw new Exception ("Illegal character: " + _text[_position++]);
+                    if (Char.IsDigit(_text[_position]) || _text[_position] == '.')
+                    {
+                        yield return GenerateNumber();
+                    }
+                    else if (_text[_position] == '{')
+                    {
+                        yield return new Token(TokenTypes.TokenType.OpenBrace, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == '}')
+                    {
+                        yield return new Token(TokenTypes.TokenType.CloseBrace, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == ',')
+                    {
+                        yield return new Token(TokenTypes.TokenType.Comma, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == '=')
+                    {
+                        yield return new Token(TokenTypes.TokenType.Equals, _text[_position++].ToString());
+                    }
+                    else if (_text[_position].IsLetter())
+                    {
+                        yield return new Token(TokenTypes.TokenType.Variable, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == '∩')
+                    {
+                        yield return new Token(TokenTypes.TokenType.Intersect, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == '∪')
+                    {
+                        yield return new Token(TokenTypes.TokenType.Union, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == '(')
+                    {
+                        yield return new Token(TokenTypes.TokenType.OpenParenthesis, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == ')')
+                    {
+                        yield return new Token(TokenTypes.TokenType.CloseParenthesis, _text[_position++].ToString());
+                    }
+                    else
+                    {
+                        throw new Exception ("Illegal character: " + _text[_position++]);
+                    }
                 }
             }
         }
