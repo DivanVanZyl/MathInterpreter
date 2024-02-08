@@ -1,6 +1,7 @@
 ﻿using Lexer.Extensions;
 using System.Security.AccessControl;
 using static Lexer.TokenTypes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lexer
 {
@@ -32,7 +33,7 @@ namespace Lexer
                     }
                     else if (_text[_position] == '{')
                     {
-                        yield return new Token(TokenType.OpenBrace, _text[_position++].ToString());
+                        yield return GenerateSet();
                     }
                     else if (_text[_position] == '}')
                     {
@@ -82,6 +83,18 @@ namespace Lexer
                 number += _text[_position++].ToString();
             }
             return new Token(TokenType.Number, number);
+        }
+
+        private Token GenerateSet()
+        {
+            string set = "";
+            while (_position < _text.Length && _text[_position] != '}')
+            {
+                set += _text[_position++].ToString();
+            }
+            set += _text[_position++].ToString();
+
+            return new Token(TokenType.Set, set);
         }
 
         private Token GenerateSetTheoryOperator()

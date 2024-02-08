@@ -19,7 +19,8 @@ namespace Lexer
             CloseParenthesis,
             Comma,
             Equals,
-            Variable
+            Variable,
+            Set
         }
     }
 

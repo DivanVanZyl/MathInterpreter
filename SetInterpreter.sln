@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetInterpreterUI", "SetInterpreter\SetInterpreterUI.csproj", "{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetInterpreterUI", "SetInterpreter\SetInterpreterUI.csproj", "{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj", "{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexer", "Lexer\Lexer.csproj", "{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A9CA302-A6CF-4B8B-B0D4-6BD923E0CDAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerTests", "LexerTests\LexerTests.csproj", "{F62594A4-563A-435F-BA94-06B366C4B869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LexerTests", "LexerTests\LexerTests.csproj", "{F62594A4-563A-435F-BA94-06B366C4B869}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{BD8F2948-DA59-4E47-88DF-05707135E24B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

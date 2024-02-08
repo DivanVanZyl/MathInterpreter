@@ -14,22 +14,6 @@ namespace LexerTests.SetTheoryLexerTests
         {
 
         }
-
-        [Test]
-        public void OpenBrace()
-        {
-            //Arrange
-            string testData = "{";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
-
-            //Act
-            var tokens = lexer.GenerateTokens();
-            Token result = tokens.FirstOrDefault();
-
-            //Assert
-            Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.OpenBrace));
-            Assert.That(result.Value, Is.EqualTo(testData));
-        }
         
         [Test]
         public void CloseBrace()

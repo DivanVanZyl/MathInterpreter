@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Lexer.TokenTypes;
 
 namespace LexerTests.SetTheoryLexerTests
 {
@@ -32,18 +33,8 @@ namespace LexerTests.SetTheoryLexerTests
             }
 
             //Assert
-            Assert.That(results[0].TokenType, Is.EqualTo(TokenTypes.TokenType.OpenBrace));
-            Assert.That(results[1].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[2].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[3].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[4].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[5].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[6].TokenType, Is.EqualTo(TokenTypes.TokenType.CloseBrace));
-
-            for (int i = 0; i < results.Count; i++)
-            {
-                Assert.That(char.Parse(results[i].Value), Is.EqualTo(testData[i]));
-            }
+            Assert.That(results[0].TokenType, Is.EqualTo(TokenType.Set));
+            Assert.That(results[0].Value, Is.EqualTo(testData));
         }
 
         [Test]
@@ -65,19 +56,12 @@ namespace LexerTests.SetTheoryLexerTests
             //Assert
             Assert.That(results[0].TokenType, Is.EqualTo(TokenTypes.TokenType.Variable));
             Assert.That(results[1].TokenType, Is.EqualTo(TokenTypes.TokenType.Equals));
-            Assert.That(results[2].TokenType, Is.EqualTo(TokenTypes.TokenType.OpenBrace));
-            Assert.That(results[3].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[4].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[5].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[6].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[7].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[8].TokenType, Is.EqualTo(TokenTypes.TokenType.CloseBrace));
+            Assert.That(results[2].TokenType, Is.EqualTo(TokenTypes.TokenType.Set));
 
             var testDataTrimmed = testData.Replace(" ", "");
-            for (int i = 0; i < results.Count; i++)
-            {
-                Assert.That(char.Parse(results[i].Value), Is.EqualTo(testDataTrimmed[i]));
-            }
+            Assert.That(results[0].Value, Is.EqualTo("A"));
+            Assert.That(results[1].Value, Is.EqualTo("="));
+            Assert.That(results[2].Value, Is.EqualTo("{1,2,3}"));
         }
 
         [Test]
@@ -97,30 +81,13 @@ namespace LexerTests.SetTheoryLexerTests
             }
 
             //Assert
-            Assert.That(results[0].TokenType, Is.EqualTo(TokenTypes.TokenType.OpenBrace));
-            Assert.That(results[1].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[2].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[3].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[4].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[5].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[6].TokenType, Is.EqualTo(TokenTypes.TokenType.CloseBrace));
-
-            Assert.That(results[7].TokenType, Is.EqualTo(TokenTypes.TokenType.Union));
-
-            Assert.That(results[8].TokenType, Is.EqualTo(TokenTypes.TokenType.OpenBrace));
-            Assert.That(results[9].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[10].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[11].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[12].TokenType, Is.EqualTo(TokenTypes.TokenType.Comma));
-            Assert.That(results[13].TokenType, Is.EqualTo(TokenTypes.TokenType.Number));
-            Assert.That(results[14].TokenType, Is.EqualTo(TokenTypes.TokenType.CloseBrace));
-
-            var testDataTrimmed = testData.Replace(" ", "");
-            for (int i = 0; i < 7; i++)
-            {
-                Assert.That(char.Parse(results[i].Value), Is.EqualTo(testDataTrimmed[i]));
-            }
-            Assert.That(char.Parse(results[7].Value), Is.EqualTo('∪'));
+            Assert.That(results[0].TokenType, Is.EqualTo(TokenTypes.TokenType.Set));
+            Assert.That(results[1].TokenType, Is.EqualTo(TokenTypes.TokenType.Union));
+            Assert.That(results[2].TokenType, Is.EqualTo(TokenTypes.TokenType.Set));
+                        
+            Assert.That(results[0].Value, Is.EqualTo("{1,2,3}"));
+            Assert.That(char.Parse(results[1].Value), Is.EqualTo('∪'));
+            Assert.That(results[2].Value, Is.EqualTo("{4,5,6}"));
         }
     }
 }
