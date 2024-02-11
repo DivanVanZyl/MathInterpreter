@@ -9,9 +9,12 @@ string text = Console.ReadLine();
 //string text = "{10,2.0,3}";
 //Console.WriteLine(text);
 
-Console.WriteLine("∪");
-
 ILexer lexer = new SetTheoryLexer(text);
-var tokens = lexer.GenerateTokens();
-foreach (var token in tokens)
-{ Console.WriteLine( token.ToString()); }
+var tokens = lexer.GenerateTokens().ToList();
+/*foreach (var token in tokens)
+{ Console.WriteLine( token.ToString()); }*/
+
+var parser = new Parser.SetTheoryParser(tokens);
+var tree = parser.Parse();
+
+Console.WriteLine(tree);
