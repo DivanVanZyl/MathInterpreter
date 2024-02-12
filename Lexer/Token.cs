@@ -11,6 +11,10 @@ namespace Lexer
         public enum TokenType
         {
             Number,
+            Plus,
+            Minus,
+            Multiply,
+            Divide,
             OpenBrace,
             CloseBrace,
             Intersect,
