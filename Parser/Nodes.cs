@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Parser
 {
-    public class NumberNode
+    public abstract class Node
+    {
+
+    }
+
+    public class NumberNode : Node
     {
         private float _value;
         public override string ToString()
@@ -15,11 +20,49 @@ namespace Parser
         }
     }
 
-    public abstract class Node
+    public class AddNode : Node
     {
+        private Node _node1;
+        private Node _node2;
 
+        public override string ToString()
+        {
+            return "(" + _node1 + "+" + _node2 + ")";
+        }
     }
 
+    public class SubtractNode : Node
+    {
+        private Node _node1;
+        private Node _node2;
+
+        public override string ToString()
+        {
+            return "(" + _node1 + "-" + _node2 + ")";
+        }
+    }
+
+    public class MultiplyNode : Node
+    {
+        private Node _node1;
+        private Node _node2;
+
+        public override string ToString()
+        {
+            return "(" + _node1 + "*" + _node2 + ")";
+        }
+    }
+
+    public class DivideNode : Node
+    {
+        private Node _node1;
+        private Node _node2;
+
+        public override string ToString()
+        {
+            return "(" + _node1 + "/" + _node2 + ")";
+        }
+    }
 
     public class UnionNode : Node
     {
