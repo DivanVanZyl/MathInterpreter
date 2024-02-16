@@ -11,19 +11,19 @@ namespace Parser
 
     }
 
-    public class NumberNode : Node
+    public class NumberNode(float number) : Node
     {
-        private float _value;
+        private float _value = number;
         public override string ToString()
         {
             return _value.ToString();
         }
     }
 
-    public class AddNode : Node
+    public class AddNode(Node node1, Node node2) : Node
     {
-        private Node _node1;
-        private Node _node2;
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {
@@ -31,10 +31,10 @@ namespace Parser
         }
     }
 
-    public class SubtractNode : Node
+    public class SubtractNode(Node node1, Node node2) : Node
     {
-        private Node _node1;
-        private Node _node2;
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {
@@ -42,10 +42,10 @@ namespace Parser
         }
     }
 
-    public class MultiplyNode : Node
+    public class MultiplyNode(Node node1, Node node2) : Node
     {
-        private Node _node1;
-        private Node _node2;
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {
@@ -53,10 +53,10 @@ namespace Parser
         }
     }
 
-    public class DivideNode : Node
+    public class DivideNode(Node node1, Node node2) : Node
     {
-        private Node _node1;
-        private Node _node2;
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {

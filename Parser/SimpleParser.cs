@@ -12,19 +12,25 @@ namespace Parser
         private int _position = 0;
         public SimpleParser(List<Token> tokens)
         {
+            if (tokens.Count == 0)
+                throw new InvalidDataException("You cannot create a parser with zero tokens.");
             _tokens = tokens;
         }
 
         public Node Parse()
         {
-            var result = Expression();
+            var result = Expression();  //This Node would be the "root" node of the tree.
 
             if (_position < _tokens.Count - 1)  //In this case, not all nodes have been processed, and is caused by invalid syntax/expression
-                throw new Exception("Invalid expression");
+                throw new Exception("Invalid syntax");
 
             return result;
         }
 
+        /// <summary>
+        /// Looks for the plus and minus operations: Term (plus OR minus) Term
+        /// </summary>
+        /// <returns></returns>
         private Node Expression()
         {
             var result = Term();
@@ -33,61 +39,59 @@ namespace Parser
             {
                 if(_tokens[_position].TokenType == TokenTypes.TokenType.Plus)
                 {
-                    //AddNode()
+                    _position++;
+                    result = new AddNode(result, Term());    
                 }
-            }
-
-            while (_position < _tokens.Count && (_tokens[_position].TokenType == TokenTypes.TokenType.Intersect || _tokens[_position].TokenType == TokenTypes.TokenType.Union))
-            {
-                if (_tokens[_position].TokenType == TokenTypes.TokenType.Intersect)
-                    result = new IntersectNode((SetNode)result, (SetNode)Term());
-                else if (_tokens[_position].TokenType == TokenTypes.TokenType.Union)
-                    result = new UnionNode((SetNode)result, (SetNode)Term());
+                else if (_tokens[_position].TokenType == TokenTypes.TokenType.Minus)
+                {
+                    _position++;
+                    result = new SubtractNode(result, Term());
+                }
             }
             return result;
         }
 
+        /// <summary>
+        /// Look for multiply and divide operators, which take the most precedence: Factor (multiply OR divide) AnotherFactor.
+        /// Note, that a term has zero or more operators. eg. you could have a term like 8, 8*2, 2*2/16 etc.
+        /// </summary>
+        /// <returns></returns>
         private Node Term()
         {
             var result = Factor();
 
-            while (_position < _tokens.Count && (false))
+            while (_position < _tokens.Count && (_tokens[_position].TokenType == TokenTypes.TokenType.Multiply || _tokens[_position].TokenType == TokenTypes.TokenType.Divide))
             {
-                /* if (_tokens[_position].TokenType == TokenTypes.TokenType.Intersect)
-                     //result = new IntersectNode(result, Factor());
-                 else if (_tokens[_position].TokenType == TokenTypes.TokenType.Union)*/
-                //result = new UnionNode(result, Factor());
+                if (_tokens[_position].TokenType == TokenTypes.TokenType.Multiply)
+                {
+                    _position++;
+                    result = new MultiplyNode(result, Factor());
+                }
+                else if (_tokens[_position].TokenType == TokenTypes.TokenType.Divide)
+                {
+                    _position++;
+                    result = new DivideNode(result, Factor());
+                }
             }
-
             return result;
         }
 
+        /// <summary>
+        /// Look for a number token. A factor will consist of a number.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         private Node Factor()
         {
             //var result = Factor();
             var token = _tokens[_position];
 
-            if (token.TokenType == TokenTypes.TokenType.Set)
-            {
-                List<string> elements = new List<string>();
-                string sub = "";
-                for (int i = 0; i < token.Value.Length; i++)
-                {
-                    bool isElement = false;
-                    if (token.Value[i] != '{' && token.Value[i] != ',' && token.Value[i] != '}')
-                    {
-                        sub += token.Value[i];
-                    }
-                    else if (token.Value[i] != '{')
-                    {
-                        elements.Add(sub);
-                        sub = "";
-                    }
-                }
-                return new SetNode(elements);
+            if (token.TokenType == TokenTypes.TokenType.Number)
+            {                
+                return new NumberNode(float.Parse(_tokens[_position++].Value));
             }
 
-            throw new Exception("Invalid factor");
+            throw new Exception("Invalid factor syntax");
         }
     }
 }

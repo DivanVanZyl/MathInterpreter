@@ -12,19 +12,24 @@ string text = Console.ReadLine();
 
 string text = Console.ReadLine();
 
-/*
+
 ILexer lexer = new SimpleLexer(text);
 var tokens = lexer.GenerateTokens().ToList();
+#if DEBUG
+Console.WriteLine("\nLexer Debug: ");
 foreach (var token in tokens)
-    Console.WriteLine(token.TokenType.ToString());*/
+    Console.WriteLine(token.TokenType.ToString());
+#endif
 
-
-ILexer lexer = new SetTheoryLexer(text);
+/*ILexer lexer = new SetTheoryLexer(text);
 var tokens = lexer.GenerateTokens().ToList();
 foreach (var token in tokens)
-{ Console.WriteLine(token.ToString()); }
+{ Console.WriteLine(token.ToString()); }*/
 
-/*var parser = new Parser.SetTheoryParser(tokens);
+var parser = new Parser.SimpleParser(tokens);
 var tree = parser.Parse();
 
-Console.WriteLine(tree);*/
+#if DEBUG
+Console.WriteLine("\nParser Debug: ");
+Console.WriteLine(tree);
+#endif
