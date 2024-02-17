@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Parser
 {
@@ -11,6 +12,7 @@ namespace Parser
 
     }
 
+    //Binary simple nodes
     public class NumberNode(float number) : Node
     {
         private float _value = number;
@@ -63,7 +65,26 @@ namespace Parser
             return "(" + _node1 + "/" + _node2 + ")";
         }
     }
+    //Unary simple nodes
+    public class PlusNode(Node node) : Node
+    {
+        private Node _node = node;
 
+        public override string ToString()
+        {
+            return "(+" + _node + ")";
+        }
+    }
+    public class MinusNode(Node node) : Node
+    {
+        private Node _node = node;
+
+        public override string ToString()
+        {
+            return "(-" + _node + ")";
+        }
+    }
+    //Set theory nodes
     public class UnionNode : Node
     {
         private SetNode _set1;

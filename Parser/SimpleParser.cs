@@ -90,6 +90,16 @@ namespace Parser
             {                
                 return new NumberNode(float.Parse(_tokens[_position++].Value));
             }
+            if(token.TokenType  == TokenTypes.TokenType.Plus)
+            {
+                _position++;
+                return new PlusNode(Factor());
+            }
+            if (token.TokenType == TokenTypes.TokenType.Minus)
+            {
+                _position++;
+                return new MinusNode(Factor());
+            }
 
             throw new Exception("Invalid factor syntax");
         }
