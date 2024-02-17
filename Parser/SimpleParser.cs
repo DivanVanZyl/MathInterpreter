@@ -83,8 +83,21 @@ namespace Parser
         /// <exception cref="Exception"></exception>
         private Node Factor()
         {
-            //var result = Factor();
             var token = _tokens[_position];
+
+            if(token.TokenType == TokenTypes.TokenType.OpenParenthesis)
+            {
+                _position++;
+                var result = Expression();
+
+                token = _tokens[_position];
+                if(token.TokenType != TokenTypes.TokenType.CloseParenthesis)
+                {
+                    throw new InvalidOperationException("Invalid syntax, expected: )");
+                }
+                _position++;
+                return result;
+            }
 
             if (token.TokenType == TokenTypes.TokenType.Number)
             {                
