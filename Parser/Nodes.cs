@@ -13,9 +13,10 @@ namespace Parser
     }
 
     //Binary simple nodes
-    public class NumberNode(float number) : Node
+    public class NumberNode(double number) : Node
     {
-        private float _value = number;
+        private double _value = number;
+        public double Value => _value;
         public override string ToString()
         {
             return _value.ToString();
@@ -26,6 +27,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -37,6 +40,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -48,6 +53,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -59,6 +66,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -69,6 +78,7 @@ namespace Parser
     public class PlusNode(Node node) : Node
     {
         private Node _node = node;
+        public Node Node => _node;
 
         public override string ToString()
         {
@@ -78,6 +88,7 @@ namespace Parser
     public class MinusNode(Node node) : Node
     {
         private Node _node = node;
+        public Node Node => _node;
 
         public override string ToString()
         {
