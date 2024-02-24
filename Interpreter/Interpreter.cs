@@ -41,9 +41,9 @@ namespace Interpreter
             {
                 return double.Parse(VisitPlusNode((PlusNode)node).ToString());
             }
-            if (node.GetType() == typeof(DivideNode))
+            if (node.GetType() == typeof(MinusNode))
             {
-                return double.Parse(VisitDivideNode((DivideNode)node).ToString());
+                return double.Parse(VisitMinusNode((MinusNode)node).ToString());
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Interpreter
         }
         private Number VisitMinusNode(MinusNode node)
         {
-            return new Number(-(Visit(node.Node)));
+            return new Number(-Visit(node.Node));
         }
     }
 }
