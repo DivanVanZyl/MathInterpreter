@@ -7,19 +7,17 @@ using System.Linq.Expressions;
 namespace Parser
 {
     /*The SimpleParser builds a tree of what needs to happen.*/
-    public class SimpleParser
+    public class SimpleParser : IParser
     {
         private List<Token> _tokens;
         private int _position = 0;
-        public SimpleParser(List<Token> tokens)
+        public Node Parse(List<Token>? tokens)
         {
-            if (tokens.Count == 0)
+            if(tokens is not null && tokens.Count > 0)
+                _tokens = tokens;
+            else
                 throw new InvalidDataException("You cannot create a parser with zero tokens.");
-            _tokens = tokens;
-        }
 
-        public Node Parse()
-        {
             var result = Expression();  //This Node would be the "root" node of the tree.
 
             if (_position < _tokens.Count - 1)  //In this case, not all nodes have been processed, and is caused by invalid syntax/expression

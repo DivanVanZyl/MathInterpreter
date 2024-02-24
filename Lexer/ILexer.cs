@@ -8,6 +8,6 @@ namespace Lexer
 {
     public interface ILexer
     {
-        public IEnumerable<Token> GenerateTokens();
+        public IEnumerable<Token> GenerateTokens(string? text);
     }
 }

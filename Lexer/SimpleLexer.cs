@@ -1,20 +1,20 @@
 ﻿using Lexer.Extensions;
 using System.Security.AccessControl;
 using static Lexer.TokenTypes;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lexer
 {
     public class SimpleLexer : ILexer
     {
-        private readonly string _text;
+        private string _text;
         private int _position = 0;
-        public SimpleLexer(string text)
+        public IEnumerable<Token> GenerateTokens(string? text)
         {
-            _text = text;
-        }
-        public IEnumerable<Token> GenerateTokens()
-        {
+            if(text is not null)
+                _text = text;
+
             while (_position < _text.Length)
             {
                 if (_text[_position].IsWhitespace())

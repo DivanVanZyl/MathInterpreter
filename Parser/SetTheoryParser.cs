@@ -10,12 +10,8 @@ namespace Parser
     {
         private List<Token> _tokens;
         private int _position = 0;
-        public SetTheoryParser(List<Token> tokens)
-        {
-            _tokens = tokens;
-        }
 
-        public Node Parse()
+        public Node Parse(List<Token>? tokens)
         {
             var result = Expr();
 

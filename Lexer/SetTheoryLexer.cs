@@ -7,14 +7,17 @@ namespace Lexer
 {
     public class SetTheoryLexer : ILexer
     {
-        private readonly string _text;
+        private string _text;
         private int _position = 0;
-        public SetTheoryLexer(string text)
+        public SetTheoryLexer(string? text)
         {
             _text = text;
         }
-        public IEnumerable<Token> GenerateTokens()
+        public IEnumerable<Token> GenerateTokens(string? text)
         {
+            if(text is not null)
+                _text = text;
+
             while (_position < _text.Length)
             {
                 if (_text[_position].IsWhitespace())
