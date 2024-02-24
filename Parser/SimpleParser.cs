@@ -1,6 +1,7 @@
 ﻿using Lexer;
 using Lexer.Extensions;
 using System.Data;
+using System.Globalization;
 using System.Linq.Expressions;
 
 namespace Parser
@@ -101,7 +102,7 @@ namespace Parser
 
             if (token.TokenType == TokenTypes.TokenType.Number)
             {                
-                return new NumberNode(float.Parse(_tokens[_position++].Value));
+                return new NumberNode(double.Parse(_tokens[_position++].Value, CultureInfo.InvariantCulture.NumberFormat));
             }
             if(token.TokenType  == TokenTypes.TokenType.Plus)
             {

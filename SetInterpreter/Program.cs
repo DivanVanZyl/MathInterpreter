@@ -5,10 +5,19 @@ using Interpreter;
 using Lexer;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+
 /*
 string text = Console.ReadLine();
 //string text = "{10,2.0,3}";
 //Console.WriteLine(text);*/
+
+/*ILexer lexer = new SetTheoryLexer(text);
+var tokens = lexer.GenerateTokens().ToList();
+foreach (var token in tokens)
+{ Console.WriteLine(token.ToString()); }*/
+
+//Simple example
 try
 {
     string text = Console.ReadLine();
@@ -20,12 +29,7 @@ try
     Console.WriteLine("\nLexer Debug: ");
     foreach (var token in tokens)
         Console.WriteLine(token.TokenType.ToString());
-    #endif
-
-    /*ILexer lexer = new SetTheoryLexer(text);
-    var tokens = lexer.GenerateTokens().ToList();
-    foreach (var token in tokens)
-    { Console.WriteLine(token.ToString()); }*/
+#endif    
 
     var parser = new Parser.SimpleParser(tokens);
     var tree = parser.Parse();
@@ -35,7 +39,7 @@ try
     Console.WriteLine(tree);
     #endif
 
-    var interpreter = new SimpleInterpreter();
+    IInterpreter<double> interpreter = new SimpleInterpreter();
     var value = interpreter.Visit(tree);
     Console.WriteLine(value);
 }
