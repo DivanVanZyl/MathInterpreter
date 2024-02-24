@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 namespace Parser
 {
     /*The SetTheoryParser builds a tree of what needs to happen.*/
-    public class SetTheoryParser
+    public class SetTheoryParser : IParser
     {
         private List<Token> _tokens;
         private int _position = 0;

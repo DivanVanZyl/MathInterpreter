@@ -10,5 +10,5 @@ namespace Interpreter
     public interface IInterpreter<T>
     {
         public T Visit(Node node);
-    }
+    }    
 }
