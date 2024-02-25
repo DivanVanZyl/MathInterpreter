@@ -9,10 +9,6 @@ namespace Lexer
     {
         private string _text;
         private int _position = 0;
-        public SetTheoryLexer(string? text)
-        {
-            _text = text;
-        }
         public IEnumerable<Token> GenerateTokens(string? text)
         {
             if(text is not null)

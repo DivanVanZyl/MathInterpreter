@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 Startup startup = new Startup();
-startup.ConfigureServices();
+startup.ConfigureServices(ServiceType.Set);
 IServiceProvider serviceProvider = startup.Services.BuildServiceProvider();
 
 //Simple example
