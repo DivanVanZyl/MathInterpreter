@@ -61,7 +61,6 @@ namespace Parser
                 string sub = "";
                 for (int i = 0; i < token.Value.Length; i++)
                 {
-                    bool isElement = false;
                     if (token.Value[i] != '{' && token.Value[i] != ',' && token.Value[i] != '}')
                     {
                         sub += token.Value[i];

@@ -11,9 +11,6 @@ namespace InterpreterUI
 {
     public class StringRunner(ILexer lexer, IParser parser, IInterpreter<string> interpreter) : IRunner
     {
-        private ILexer _lexer = lexer;
-        private IParser _parser = parser;
-        private IInterpreter<string> _interpreter = interpreter;
         public void Run(string text)
         {
             try
@@ -42,9 +39,6 @@ namespace InterpreterUI
     
     public class DoubleRunner(ILexer lexer, IParser parser, IInterpreter<double> interpreter) : IRunner
     {
-        private ILexer _lexer = lexer;
-        private IParser _parser = parser;
-        private IInterpreter<double> _interpreter = interpreter;
         public void Run(string text)
         {
             try
