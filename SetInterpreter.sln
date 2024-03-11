@@ -13,34 +13,56 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LexerTests", "LexerTests\Le
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parser", "Parser\Parser.csproj", "{BD8F2948-DA59-4E47-88DF-05707135E24B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpreter", "Interpreter\Interpreter.csproj", "{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interpreter", "Interpreter\Interpreter.csproj", "{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Set|Any CPU = Set|Any CPU
+		SimpleMath|Any CPU = SimpleMath|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.Set|Any CPU.ActiveCfg = Set|Any CPU
+		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.Set|Any CPU.Build.0 = Set|Any CPU
+		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.SimpleMath|Any CPU.ActiveCfg = SimpleMath|Any CPU
+		{F4285CD6-830D-4189-BDAB-C0CBD162BEC4}.SimpleMath|Any CPU.Build.0 = SimpleMath|Any CPU
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Set|Any CPU.ActiveCfg = Set|Any CPU
+		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.Set|Any CPU.Build.0 = Set|Any CPU
+		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.SimpleMath|Any CPU.ActiveCfg = SimpleMath|Any CPU
+		{879F0CF3-DEEE-4B1A-9DB6-3419FCF44670}.SimpleMath|Any CPU.Build.0 = SimpleMath|Any CPU
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F62594A4-563A-435F-BA94-06B366C4B869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.Set|Any CPU.ActiveCfg = Set|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.Set|Any CPU.Build.0 = Set|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.SimpleMath|Any CPU.ActiveCfg = SimpleMath|Any CPU
+		{F62594A4-563A-435F-BA94-06B366C4B869}.SimpleMath|Any CPU.Build.0 = SimpleMath|Any CPU
 		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Set|Any CPU.ActiveCfg = Set|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.Set|Any CPU.Build.0 = Set|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.SimpleMath|Any CPU.ActiveCfg = SimpleMath|Any CPU
+		{BD8F2948-DA59-4E47-88DF-05707135E24B}.SimpleMath|Any CPU.Build.0 = SimpleMath|Any CPU
 		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.Set|Any CPU.ActiveCfg = Set|Any CPU
+		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.Set|Any CPU.Build.0 = Set|Any CPU
+		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.SimpleMath|Any CPU.ActiveCfg = SimpleMath|Any CPU
+		{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}.SimpleMath|Any CPU.Build.0 = SimpleMath|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

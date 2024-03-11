@@ -9,7 +9,11 @@ using Microsoft.Extensions.DependencyInjection;
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 Startup startup = new Startup();
-startup.ConfigureServices(ServiceType.Set); //Change Service Types here!
+#if SIMPLEMATH
+startup.ConfigureServices(ServiceType.Simple);
+#elif SET
+startup.ConfigureServices(ServiceType.Set); 
+#endif
 IServiceProvider serviceProvider = startup.Services.BuildServiceProvider();
 
 //Simple example
