@@ -21,10 +21,10 @@ namespace LexerTests.SetTheoryLexerTests
         {
             //Arrange
             string testData = "{1,2,3}";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
+            SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
-            var tokens = lexer.GenerateTokens();
+            var tokens = lexer.GenerateTokens(testData);
 
             List<Token> results = new List<Token>();
             foreach (var token in tokens)
@@ -42,10 +42,10 @@ namespace LexerTests.SetTheoryLexerTests
         {
             //Arrange
             string testData = "A = {1,2,3}";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
+            SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
-            var tokens = lexer.GenerateTokens();
+            var tokens = lexer.GenerateTokens(testData);
 
             List<Token> results = new List<Token>();
             foreach (var token in tokens)
@@ -69,10 +69,10 @@ namespace LexerTests.SetTheoryLexerTests
         {
             //Arrange
             string testData = @"{1,2,3} \union {4,5,6}";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
+            SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
-            var tokens = lexer.GenerateTokens();
+            var tokens = lexer.GenerateTokens(testData);
 
             List<Token> results = new List<Token>();
             foreach (var token in tokens)

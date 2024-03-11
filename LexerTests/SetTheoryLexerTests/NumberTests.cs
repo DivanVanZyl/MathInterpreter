@@ -15,10 +15,10 @@ namespace LexerTests.SetTheoryLexerTests
         {
             //Arrange
             string testData = "2";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
+            SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
-            var tokens = lexer.GenerateTokens();
+            var tokens = lexer.GenerateTokens(testData);
             Token result = tokens.FirstOrDefault();
 
             //Assert
@@ -31,10 +31,10 @@ namespace LexerTests.SetTheoryLexerTests
         {
             //Arrange
             string testData = "256";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
+            SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
-            var tokens = lexer.GenerateTokens();
+            var tokens = lexer.GenerateTokens(testData);
             Token result = tokens.FirstOrDefault();
 
             //Assert
@@ -47,10 +47,10 @@ namespace LexerTests.SetTheoryLexerTests
         {
             //Arrange
             string testData = ".";
-            SetTheoryLexer lexer = new SetTheoryLexer(testData);
+            SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
-            var tokens = lexer.GenerateTokens();
+            var tokens = lexer.GenerateTokens(testData);
             Token result = tokens.FirstOrDefault();
 
             //Assert
