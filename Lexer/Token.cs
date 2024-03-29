@@ -19,8 +19,10 @@ namespace Lexer
             OpenBrace,
             CloseBrace,
             //Set Theory
-            Intersect,
-            Union,
+            Intersect,  //∩
+            Union,  //∪
+            SetDifference,  //-
+            SymmetricSetDifference, //+
             OpenParenthesis,
             CloseParenthesis,
             Comma,

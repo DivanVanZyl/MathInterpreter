@@ -37,7 +37,7 @@ namespace Lexer
                     else if (_text[_position] == '}')
                     {
                         yield return new Token(TokenType.CloseBrace, _text[_position++].ToString());
-                    }
+                    }   
                     else if (_text[_position] == ',')
                     {
                         yield return new Token(TokenType.Comma, _text[_position++].ToString());

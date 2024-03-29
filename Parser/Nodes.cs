@@ -157,6 +157,68 @@ namespace Parser
         }
     }
 
+    public class SetDifferenceNode : Node
+    {
+        private SetNode _set1;
+        private SetNode _set2;
+
+        public SetDifferenceNode(SetNode set1, SetNode set2)
+        {
+            _set1 = set1;
+            _set2 = set2;
+        }
+
+        public override string ToString()
+        {
+            string text = "{";
+            foreach (string s in _set1.Values)
+            {
+                text += (s + ",");
+            }
+            text = text.Remove(text.Length - 1, 1);
+            text += "} ";
+            text += " - {";
+            foreach (string s in _set2.Values)
+            {
+                text += (s + ",");
+            }
+            text = text.Remove(text.Length - 1, 1);
+            text += "}";
+            return text;
+        }
+    }
+
+    public class SymmertricSetDifferenceNode : Node
+    {
+        private SetNode _set1;
+        private SetNode _set2;
+
+        public SymmertricSetDifferenceNode(SetNode set1, SetNode set2)
+        {
+            _set1 = set1;
+            _set2 = set2;
+        }
+
+        public override string ToString()
+        {
+            string text = "{";
+            foreach (string s in _set1.Values)
+            {
+                text += (s + ",");
+            }
+            text = text.Remove(text.Length - 1, 1);
+            text += "} ";
+            text += " + {";
+            foreach (string s in _set2.Values)
+            {
+                text += (s + ",");
+            }
+            text = text.Remove(text.Length - 1, 1);
+            text += "}";
+            return text;
+        }
+    }
+
     public class SetNode : Node
     {
         private List<string> _set = new List<string>();
