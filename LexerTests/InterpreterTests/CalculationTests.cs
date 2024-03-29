@@ -9,7 +9,7 @@ using Parser;
 using static Lexer.TokenTypes;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace LexerTests.SimpleMathTests
+namespace InterpreterTests
 {
     public class CalculationTests
     {
@@ -89,6 +89,24 @@ namespace LexerTests.SimpleMathTests
 
             //Assert
             Assert.That(value, Is.EqualTo(8.0));
+        }
+
+        [Test]
+        public void ComplexCalculation_Mixed()
+        {
+            //Arrange
+            string testData = "2+4*2-16/2";
+            SimpleLexer lexer = new SimpleLexer();
+            SimpleParser parser = new SimpleParser();
+            SimpleInterpreter interpreter = new SimpleInterpreter();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+            var value = interpreter.Visit(tree);
+
+            //Assert
+            Assert.That(value, Is.EqualTo(2.0));
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Lexer.TokenTypes;
 
-namespace LexerTests.SetTheoryLexerTests
+namespace LexerTests
 {
     public class ExpressionTests
     {

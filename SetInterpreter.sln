@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parser", "Parser\Parser.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interpreter", "Interpreter\Interpreter.csproj", "{018B7FF7-B3C2-47AC-8A7A-B40AB0243E5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetTheoryMathTests", "SetTheoryMathTests\SetTheoryMathTests.csproj", "{B71FD0BB-04FD-47BE-B395-0CA61F50490C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetTheoryTests", "SetTheoryMathTests\SetTheoryTests.csproj", "{B71FD0BB-04FD-47BE-B395-0CA61F50490C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

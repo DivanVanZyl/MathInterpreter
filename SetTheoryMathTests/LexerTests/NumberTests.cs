@@ -1,6 +1,6 @@
 using Lexer;
 
-namespace LexerTests.SetTheoryLexerTests
+namespace LexerTests
 {
     public class NumberTests
     {
