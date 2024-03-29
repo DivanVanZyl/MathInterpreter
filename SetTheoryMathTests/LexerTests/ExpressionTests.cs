@@ -89,5 +89,31 @@ namespace LexerTests
             Assert.That(char.Parse(results[1].Value), Is.EqualTo('∪'));
             Assert.That(results[2].Value, Is.EqualTo("{4,5,6}"));
         }
+
+        [Test]
+        public void IntersectExpression()
+        {
+            //Arrange
+            string testData = @"{1,2,3} \intersect {3,4,5,6}";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData);
+
+            List<Token> results = new List<Token>();
+            foreach (var token in tokens)
+            {
+                results.Add(token);
+            }
+
+            //Assert
+            Assert.That(results[0].TokenType, Is.EqualTo(TokenTypes.TokenType.Set));
+            Assert.That(results[1].TokenType, Is.EqualTo(TokenTypes.TokenType.Intersect));
+            Assert.That(results[2].TokenType, Is.EqualTo(TokenTypes.TokenType.Set));
+
+            Assert.That(results[0].Value, Is.EqualTo("{1,2,3}"));
+            Assert.That(char.Parse(results[1].Value), Is.EqualTo('∩'));
+            Assert.That(results[2].Value, Is.EqualTo("{3,4,5,6}"));
+        }
     }
 }

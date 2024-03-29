@@ -10,18 +10,22 @@ namespace Parser
     {
         private List<Token> _tokens;
         private int _position = 0;
-
         public Node Parse(List<Token>? tokens)
         {
-            var result = Expr();
+            if (tokens is not null && tokens.Count > 0)
+                _tokens = tokens;
+            else
+                throw new InvalidDataException("You cannot create a parser with zero tokens.");
 
-            if (_position < _tokens.Count - 1)
-                throw new Exception("Invalid expression");
+            var result = Expression();  //This Node would be the "root" node of the tree.
+
+            if (_position < _tokens.Count - 1)  //In this case, not all nodes have been processed, and is caused by invalid syntax/expression
+                throw new Exception("Invalid syntax");
 
             return result;
         }
 
-        private Node Expr()
+        private Node Expression()
         {
             var result = Term();
 

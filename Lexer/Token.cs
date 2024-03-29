@@ -10,6 +10,7 @@ namespace Lexer
     {
         public enum TokenType
         {
+            //Simple
             Number,
             Plus,
             Minus,
@@ -17,6 +18,7 @@ namespace Lexer
             Divide,
             OpenBrace,
             CloseBrace,
+            //Set Theory
             Intersect,
             Union,
             OpenParenthesis,
@@ -24,7 +26,8 @@ namespace Lexer
             Comma,
             Equals,
             Variable,
-            Set
+            Set,
+            EmptySet
         }
     }
 
