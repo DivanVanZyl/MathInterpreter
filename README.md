@@ -15,3 +15,4 @@ Example operations for the set theory interpreter:
 | `{1,2,3} \intersect {3,4,5}` | `{3}` |
 | `{1,2,3} \diff {3,4,5}` | `{1,2}` |
 | `{1,2,3} \symdiff {3,4,5}` | `{1,2,4,5}` |
+| `{1,2,3} \symdiff {3,4,5} \union {10}` | `{1,2,4,5,10}` |
