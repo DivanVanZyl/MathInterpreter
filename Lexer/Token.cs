@@ -28,8 +28,9 @@ namespace Lexer
             Comma,
             Equals,
             Variable,
-            Set,
-            EmptySet
+            //Set,
+            EmptySet,
+            Element //Element of a set or "member" of a set.
         }
     }
 

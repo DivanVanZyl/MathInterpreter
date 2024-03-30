@@ -22,17 +22,23 @@ namespace Lexer
                 }
                 else
                 {
+                    //Elements. Simliar to "Number" in "Simple Math Parser" terms, in the sense that it is the most atomic contruct of a set theory expression.
                     if (Char.IsDigit(_text[_position]) || _text[_position] == '.')
                     {
                         yield return GenerateNumber();
                     }
+                    else if (_text[_position].IsLetter())
+                    {
+                        yield return GenerateElement();
+                    }
+                    //Operators
                     else if (_text[_position] == '\\')
                     {
                         yield return GenerateSetTheoryOperator();
                     }
                     else if (_text[_position] == '{')
                     {
-                        yield return GenerateSet();
+                        yield return new Token(TokenType.OpenBrace, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '}')
                     {
@@ -46,10 +52,10 @@ namespace Lexer
                     {
                         yield return new Token(TokenType.Equals, _text[_position++].ToString());
                     }
-                    else if (_text[_position].IsLetter())
+                    /*else if (_text[_position].IsLetter())
                     {
                         yield return new Token(TokenType.Variable, _text[_position++].ToString());
-                    }
+                    }*/
                     else if (_text[_position] == '∩')
                     {
                         yield return new Token(TokenType.Intersect, _text[_position++].ToString());
@@ -68,15 +74,15 @@ namespace Lexer
                     }
                     else if (_text[_position] == '∅')
                     {
-                        yield return new Token(TokenType.CloseParenthesis, _text[_position++].ToString());
+                        yield return new Token(TokenType.EmptySet, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '-')
                     {
-                        yield return new Token(TokenType.SetDifference, _text[_position++].ToString());
+                        yield return new Token(TokenType.Minus, _text[_position++].ToString());
                     }
                     else if (_text[_position] == '+')
                     {
-                        yield return new Token(TokenType.SymmetricSetDifference, _text[_position++].ToString());
+                        yield return new Token(TokenType.Plus, _text[_position++].ToString());
                     }
                     else
                     {
@@ -93,21 +99,21 @@ namespace Lexer
             {
                 number += _text[_position++].ToString();
             }
-            return new Token(TokenType.Number, number);
+            return new Token(TokenType.Element, number);
         }
-
-        private Token GenerateSet()
+        
+        private Token GenerateElement()
         {
-            string set = "";
-            while (_position < _text.Length && _text[_position] != '}')
+            string element = "";
+            while (_position < _text.Length && (_text[_position].IsLetter() || _text[_position].IsNumber()))
             {
-                set += _text[_position++].ToString();
+                element += _text[_position++].ToString();
             }
-            set += _text[_position++].ToString();
-
-            return new Token(TokenType.Set, set);
+            return new Token(TokenType.Element, element);
         }
 
+        //This method is needed because it is more conveniet to type \union than ∪ for example. 
+        //This method changes that "\union" into "∪".
         private Token GenerateSetTheoryOperator()
         {
             string operatorText = "";
@@ -122,6 +128,14 @@ namespace Lexer
             else if (operatorText.ToLower() == @"\un" || operatorText.ToLower() == @"\union")
             {
                 return new Token(TokenType.Union, "∪");
+            }
+            else if (operatorText.ToLower() == @"\diff" || operatorText.ToLower() == @"\difference")
+            {
+                return new Token(TokenType.SetDifference, "-");
+            }
+            else if (operatorText.ToLower() == @"\sym" || operatorText.ToLower() == @"\symdiff" || operatorText.ToLower() == @"\symmetricdifference")
+            {
+                return new Token(TokenType.SymmetricSetDifference, "+");
             }
             else
             {

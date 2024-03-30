@@ -64,10 +64,10 @@ namespace LexerTests
         }
 
         [Test]
-        public void Variable()
+        public void Element_SingleLetter()
         {
             //Arrange
-            string testData = "A";
+            string testData = "a";
             SetTheoryLexer lexer = new SetTheoryLexer();
 
             //Act
@@ -75,7 +75,55 @@ namespace LexerTests
             Token result = tokens.FirstOrDefault();
 
             //Assert
-            //Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Equals));
+            Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Element));
+            Assert.That(result.Value, Is.EqualTo(testData));
+        }
+
+        [Test]
+        public void Element_Word()
+        {
+            //Arrange
+            string testData = "someElement";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData);
+            Token result = tokens.FirstOrDefault();
+
+            //Assert
+            Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Element));
+            Assert.That(result.Value, Is.EqualTo(testData));
+        }
+
+        [Test]
+        public void Element_Number()
+        {
+            //Arrange
+            string testData = "1";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData);
+            Token result = tokens.FirstOrDefault();
+
+            //Assert
+            Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Element));
+            Assert.That(result.Value, Is.EqualTo(testData));
+        }
+
+        [Test]
+        public void Element_LongerNumber()
+        {
+            //Arrange
+            string testData = "123456";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData);
+            Token result = tokens.FirstOrDefault();
+
+            //Assert
+            Assert.That(result.TokenType, Is.EqualTo(TokenTypes.TokenType.Element));
             Assert.That(result.Value, Is.EqualTo(testData));
         }
     }

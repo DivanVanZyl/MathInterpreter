@@ -96,130 +96,87 @@ namespace Parser
         }
     }
     //Set theory nodes
-    public class UnionNode : Node
-    {
-        private SetNode _set1;
-        private SetNode _set2;
 
-        public UnionNode(SetNode set1, SetNode set2)
+    public class ElementNode(string element) : Node
+    {
+        private string _value = element;
+        public string Value => _value;
+        public override string ToString()
         {
-            _set1 = set1;
-            _set2 = set2;
+            return _value;
         }
+    }
+
+    public class SetNode(List<Node> set) : Node
+    {
+        private List<Node> _set = set;
+        public List<Node> Values => _set;
+
+        public Node AddNode(Node node)
+        {
+            _set.Add(node);
+            return this;
+        }
+
         public override string ToString()
         {
             string text = "{";
-            foreach (string s in _set1.Values)
+            foreach (Node s in _set)
             {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "} ";
-            text += " ∪ {";
-            foreach (string s in _set2.Values)
-            {
-                text += (s + ",");
+                text += (s.ToString() + ",");
             }
             text = text.Remove(text.Length - 1, 1);
             text += "}";
             return text;
         }
     }
-
-    public class IntersectNode : Node
+    public class UnionNode(Node node1, Node node2) : Node
     {
-        private SetNode _set1;
-        private SetNode _set2;
-
-        public IntersectNode(SetNode set1, SetNode set2)
-        {
-            _set1 = set1;
-            _set2 = set2;
-        }
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {
-            string text = "{";
-            foreach (string s in _set1.Values)
-            {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "} ";
-            text += " ∩ {";
-            foreach (string s in _set2.Values)
-            {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "}";
-            return text;
+            return _node1.ToString() + " ∪ " + _node2.ToString();
         }
     }
 
-    public class SetDifferenceNode : Node
+    public class IntersectNode(Node node1, Node node2) : Node
     {
-        private SetNode _set1;
-        private SetNode _set2;
-
-        public SetDifferenceNode(SetNode set1, SetNode set2)
-        {
-            _set1 = set1;
-            _set2 = set2;
-        }
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {
-            string text = "{";
-            foreach (string s in _set1.Values)
-            {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "} ";
-            text += " - {";
-            foreach (string s in _set2.Values)
-            {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "}";
-            return text;
+            return _node1.ToString() + " ∩ " + _node2.ToString();
         }
     }
 
-    public class SymmertricSetDifferenceNode : Node
+    public class SetDifferenceNode(Node node1, Node node2) : Node
     {
-        private SetNode _set1;
-        private SetNode _set2;
-
-        public SymmertricSetDifferenceNode(SetNode set1, SetNode set2)
-        {
-            _set1 = set1;
-            _set2 = set2;
-        }
+        private Node _node1 = node1;
+        private Node _node2 = node2;
 
         public override string ToString()
         {
-            string text = "{";
-            foreach (string s in _set1.Values)
-            {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "} ";
-            text += " + {";
-            foreach (string s in _set2.Values)
-            {
-                text += (s + ",");
-            }
-            text = text.Remove(text.Length - 1, 1);
-            text += "}";
-            return text;
+            return _node1.ToString() + " - " + _node2.ToString();
         }
     }
 
-    public class SetNode : Node
+    public class SymmertricSetDifferenceNode(Node node1, Node node2) : Node
+    {
+        private Node _node1 = node1;
+        private Node _node2 = node2;
+
+        public override string ToString()
+        {
+            return _node1.ToString() + " + " + _node2.ToString();
+        }
+    }
+
+    /*
+     * Old SetNode code.
+     * public class SetNode : Node
     {
         private List<string> _set = new List<string>();
         public List<string> Values => _set;
@@ -236,5 +193,5 @@ namespace Parser
             text += "}";
             return text;
         }
-    }
+    }*/
 }

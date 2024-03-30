@@ -29,7 +29,6 @@ namespace ParserTests
             var tokens = lexer.GenerateTokens(testData).ToList();
             var tree = parser.Parse(tokens);
 
-            var type = tree.GetType();
             //Assert
             Assert.That(tree.GetType(), Is.EqualTo(typeof(UnionNode)));
         }
@@ -72,7 +71,7 @@ namespace ParserTests
         public void DifferenceNode()
         {
             //Arrange
-            string testData = "{1,2,3} - {3,4,5}";
+            string testData = "{1,2,3} \\diff {3,4,5}";
             SetTheoryLexer lexer = new SetTheoryLexer();
             SetTheoryParser parser = new SetTheoryParser();
 
@@ -80,7 +79,6 @@ namespace ParserTests
             var tokens = lexer.GenerateTokens(testData).ToList();
             var tree = parser.Parse(tokens);
 
-            var type = tree.GetType();
             //Assert
             Assert.That(tree.GetType(), Is.EqualTo(typeof(SetDifferenceNode)));
         }
@@ -89,7 +87,7 @@ namespace ParserTests
         public void SymmetricDifferenceNode()
         {
             //Arrange
-            string testData = "{1,2,3} + {3,4,5}";
+            string testData = "{1,2,3} \\sym {3,4,5}";
             SetTheoryLexer lexer = new SetTheoryLexer();
             SetTheoryParser parser = new SetTheoryParser();
 
