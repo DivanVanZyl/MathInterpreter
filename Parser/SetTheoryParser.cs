@@ -45,7 +45,7 @@ namespace Parser
                 }
                 else if (_tokens[_position].TokenType == TokenTypes.TokenType.Union)
                 {
-                    _position++;
+                    _position++; 
                     result = new UnionNode((SetNode)result, (SetNode)Term());
                 }
                 else if (_tokens[_position].TokenType == TokenTypes.TokenType.SetDifference)

@@ -48,5 +48,21 @@ namespace ParserTests
             //Assert
             Assert.That(tree.GetType(), Is.EqualTo(typeof(SubtractNode)));
         }
+
+        [Test]
+        public void CombinationAddNode()
+        {
+            //Arrange
+            string testData = "1+2+3";
+            SimpleLexer lexer = new SimpleLexer();
+            SimpleParser parser = new SimpleParser();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+
+            //Assert
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(AddNode)));
+        }
     }
 }

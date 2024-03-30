@@ -35,6 +35,23 @@ namespace ParserTests
         }
 
         [Test]
+        public void UnionSingleElementSetNode()
+        {
+            //Arrange
+            string testData = "{1} \\union {2}";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+            SetTheoryParser parser = new SetTheoryParser();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+
+            var type = tree.GetType();
+            //Assert
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(UnionNode)));
+        }
+
+        [Test]
         public void IntersectNode()
         {
             //Arrange
@@ -83,6 +100,23 @@ namespace ParserTests
             var type = tree.GetType();
             //Assert
             Assert.That(tree.GetType(), Is.EqualTo(typeof(SymmertricSetDifferenceNode)));
+        }
+
+        [Test]
+        public void CombinationUnionNode()
+        {
+            //Arrange
+            string testData = "{1,2,3} \\union {3,4,5} \\union {6}";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+            SetTheoryParser parser = new SetTheoryParser();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+
+            var type = tree.GetType();
+            //Assert
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(UnionNode)));
         }
     }
 }
