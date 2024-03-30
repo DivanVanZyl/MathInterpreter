@@ -66,12 +66,12 @@ namespace Parser
                 throw new Exception("Invalid Syntax: Expected { at the start of the set, but received: " + _tokens[_position].Value + " of type: " + _tokens[_position].TokenType);
 
             _position++;
-            SetNode result = new SetNode( new List<Node> { Factor() });
+            SetNode result = new SetNode( new List<string> { Factor() });
 
             while (_position < _tokens.Count && (_tokens[_position].TokenType == TokenTypes.TokenType.Comma))
             {
                 _position++;
-                result.AddNode(Factor());
+                result.AddElement(Factor());
             }
 
             if(_tokens[_position].TokenType == TokenTypes.TokenType.CloseBrace)
@@ -86,12 +86,12 @@ namespace Parser
         }
 
         //Factor is a specific element
-        private Node Factor()
+        private string Factor()
         {
             var token = _tokens[_position];
             if (token.TokenType == TokenTypes.TokenType.Element)
             {
-                return new ElementNode(_tokens[_position++].Value);
+                return _tokens[_position++].Value;
             }
 
             throw new Exception("Invalid Element");

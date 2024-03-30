@@ -107,12 +107,12 @@ namespace Parser
         }
     }
 
-    public class SetNode(List<Node> set) : Node
+    public class SetNode(List<string> set) : Node
     {
-        private List<Node> _set = set;
-        public List<Node> Values => _set;
+        private List<string> _set = set;
+        public List<string> Values => _set;
 
-        public Node AddNode(Node node)
+        public Node AddElement(string node)
         {
             _set.Add(node);
             return this;
@@ -121,9 +121,9 @@ namespace Parser
         public override string ToString()
         {
             string text = "{";
-            foreach (Node s in _set)
+            foreach (var s in _set)
             {
-                text += (s.ToString() + ",");
+                text += (s + ",");
             }
             text = text.Remove(text.Length - 1, 1);
             text += "}";
@@ -134,6 +134,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -145,6 +147,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -156,6 +160,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {
@@ -167,6 +173,8 @@ namespace Parser
     {
         private Node _node1 = node1;
         private Node _node2 = node2;
+        public Node Node1 => _node1;
+        public Node Node2 => _node2;
 
         public override string ToString()
         {

@@ -19,6 +19,4 @@ IServiceProvider serviceProvider = startup.Services.BuildServiceProvider();
 //Simple example
 IRunner interpreter = serviceProvider.GetService<IRunner>() ?? throw new NullReferenceException();
 var text = Console.ReadLine();
-interpreter.Run(
-    text ?? ""
-    );
+interpreter.Run(text ?? "");
