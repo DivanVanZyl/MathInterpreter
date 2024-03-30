@@ -9,19 +9,9 @@ I have written a simple math interpreter as a POC, and am in the process of writ
 
 Example operations:
 
-`
-Expression:  {1,2,3} \union {3,4,5}
-Result:      {1,2,3,4,5}
-`
-`
-Expression:  {1,2,3} \intersect {3,4,5}
-Result:      {3}
-`
-`
-Expression:  {1,2,3} - {3,4,5}
-Result:      {1,2}
-`
-`
-Expression:  {1,2,3} + {3,4,5}
-Result:      {1,2,4,5}
-`
+| Expression    | Result |
+| -------- | ------- |
+| `{1,2,3} \union {3,4,5}` | `{1,2,3,4,5}` |
+| `{1,2,3} \intersect {3,4,5}` | `{3}` |
+| `{1,2,3} - {3,4,5}` | `{1,2}` |
+| `{1,2,3} + {3,4,5}` | `{1,2,4,5}` |
