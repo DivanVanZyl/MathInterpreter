@@ -6,3 +6,22 @@ I have written a simple math interpreter as a POC, and am in the process of writ
 1.  The Lexer translates text into tokens.
 2.  The Parser creates a tree from the tokens.
 3.  The Interpreter evaluates the tree.
+
+Example operations:
+
+`
+Expression:  {1,2,3} \union {3,4,5}
+Result:      {1,2,3,4,5}
+`
+`
+Expression:  {1,2,3} \intersect {3,4,5}
+Result:      {3}
+`
+`
+Expression:  {1,2,3} - {3,4,5}
+Result:      {1,2}
+`
+`
+Expression:  {1,2,3} + {3,4,5}
+Result:      {1,2,4,5}
+`
