@@ -33,5 +33,56 @@ namespace ParserTests
             //Assert
             Assert.That(tree.GetType(), Is.EqualTo(typeof(UnionNode)));
         }
+
+        [Test]
+        public void IntersectNode()
+        {
+            //Arrange
+            string testData = "{1,2,3} \\intersect {3,4,5}";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+            SetTheoryParser parser = new SetTheoryParser();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+
+            var type = tree.GetType();
+            //Assert
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(IntersectNode)));
+        }
+
+        [Test]
+        public void DifferenceNode()
+        {
+            //Arrange
+            string testData = "{1,2,3} - {3,4,5}";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+            SetTheoryParser parser = new SetTheoryParser();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+
+            var type = tree.GetType();
+            //Assert
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(SetDifferenceNode)));
+        }
+
+        [Test]
+        public void SymmetricDifferenceNode()
+        {
+            //Arrange
+            string testData = "{1,2,3} + {3,4,5}";
+            SetTheoryLexer lexer = new SetTheoryLexer();
+            SetTheoryParser parser = new SetTheoryParser();
+
+            //Act
+            var tokens = lexer.GenerateTokens(testData).ToList();
+            var tree = parser.Parse(tokens);
+
+            var type = tree.GetType();
+            //Assert
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(SymmertricSetDifferenceNode)));
+        }
     }
 }

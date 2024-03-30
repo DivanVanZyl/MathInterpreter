@@ -70,6 +70,14 @@ namespace Lexer
                     {
                         yield return new Token(TokenType.CloseParenthesis, _text[_position++].ToString());
                     }
+                    else if (_text[_position] == '-')
+                    {
+                        yield return new Token(TokenType.SetDifference, _text[_position++].ToString());
+                    }
+                    else if (_text[_position] == '+')
+                    {
+                        yield return new Token(TokenType.SymmetricSetDifference, _text[_position++].ToString());
+                    }
                     else
                     {
                         throw new Exception("Illegal character: " + _text[_position++]);
