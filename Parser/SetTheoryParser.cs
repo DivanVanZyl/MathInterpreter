@@ -88,6 +88,7 @@ namespace Parser
                 string sub = "";
                 for (int i = 0; i < token.Value.Length; i++)
                 {
+                    char testChar = token.Value[i];
                     if (token.Value[i] != '{' && token.Value[i] != ',' && token.Value[i] != '}')
                     {
                         if (token.Value[i] == '-')
@@ -107,6 +108,7 @@ namespace Parser
                         sub = "";
                     }
                 }
+                _position++;
                 return new SetNode(elements);
             }
 

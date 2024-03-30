@@ -31,7 +31,7 @@ namespace ParserTests
 
             var type = tree.GetType();
             //Assert
-            Assert.That(tree.GetType(), Is.EqualTo(typeof(AddNode)));
+            Assert.That(tree.GetType(), Is.EqualTo(typeof(UnionNode)));
         }
     }
 }
