@@ -16,3 +16,18 @@ Example operations for the set theory interpreter:
 | `{1,2,3} \diff {3,4,5}` | `{1,2}` |
 | `{1,2,3} \symdiff {3,4,5}` | `{1,2,4,5}` |
 | `{1,2,3} \symdiff {3,4,5} \union {10}` | `{1,2,4,5,10}` |
+
+<h3>Supported operators</h3>
+<ul>
+  <li>Union</li>
+  <li>Intersect</li>
+  <li>Difference</li>
+  <li>Symmetric difference</li>
+</ul>
+
+<h3>To do</h3>
+<ul>
+  <li>sub-sets (sets within sets)</li>
+  <li>Cartesian product</li>
+  <li>Power set</li>
+</ul>
