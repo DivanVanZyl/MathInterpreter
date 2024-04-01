@@ -32,7 +32,7 @@ namespace Interpreter
             {
                 return VisitIntersectNode((IntersectNode)node);
             }
-            if (node.GetType() == typeof(SetDifferenceNode))
+            if (node.GetType() == typeof(SetDifferenceNode))    
             {
                 return VisitDifferenceNode((SetDifferenceNode)node);
             }
