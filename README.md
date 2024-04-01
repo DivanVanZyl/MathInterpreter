@@ -16,6 +16,7 @@ Example operations for the set theory interpreter:
 | `{1,2,3} \diff {3,4,5}` | `{1,2}` |
 | `{1,2,3} \symdiff {3,4,5}` | `{1,2,4,5}` |
 | `{1,2,3} \symdiff {3,4,5} \union {10}` | `{1,2,4,5,10}` |
+|`{{1},1} \union {{1},{},1,2}`|`{{1},1,{∅},2}`|
 
 <h3>Supported operators</h3>
 <ul>
@@ -27,7 +28,6 @@ Example operations for the set theory interpreter:
 
 <h3>To do</h3>
 <ul>
-  <li>sub-sets (sets within sets)</li>
   <li>Cartesian product</li>
   <li>Power set</li>
 </ul>
