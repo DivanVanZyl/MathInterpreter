@@ -71,20 +71,10 @@ namespace Parser
             SetNode result = new SetNode(new List<string> { });
             if(_tokens[_position].TokenType != TokenTypes.TokenType.Element)
             {
-                if (_tokens[_position].TokenType == TokenTypes.TokenType.OpenBrace) //MOVE OUT??
+                if (_tokens[_position].TokenType == TokenTypes.TokenType.OpenBrace)
                 {
                     result.AddElement(Set().ToString());
                 }
-                /*else if (_tokens[_position].TokenType == TokenTypes.TokenType.CloseBrace)
-                {
-                    if (result.Values.Count == 0)
-                        return new SetNode( new List<string> { "{∅}" });
-                    return result;
-                }
-                else
-                {
-                    throw new Exception("Parser Logic Error: Unexpected token encountered in set: " + _tokens[_position].TokenType);
-                }*/
             }
             else
             {
@@ -101,7 +91,7 @@ namespace Parser
             {
                 _position++;
                 if (result.Values.Count == 0)
-                    return new SetNode(new List<string> { "∅" });
+                    return new SetNode(new List<string> { "" });
                 return result;
             }
             else
@@ -122,10 +112,6 @@ namespace Parser
             {
                 return Set().ToString();
             }
-            /*else if (token.TokenType == TokenTypes.TokenType.CloseBrace)
-            {
-                return "";  //Empty set
-            }*/
 
             throw new Exception("Invalid Element");
         }
