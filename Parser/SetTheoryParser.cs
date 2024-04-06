@@ -92,7 +92,7 @@ namespace Parser
                 _position++;
                 if (result.Values.Count == 0)
                     return new SetNode(new List<string> { "" });
-                return result;
+                return result;  
             }
             else
             {

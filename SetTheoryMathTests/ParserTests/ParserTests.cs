@@ -78,9 +78,11 @@ namespace ParserTests
             //Act
             var tokens = lexer.GenerateTokens(testData).ToList();
             var tree = parser.Parse(tokens);
+            var interpteter = new SetTheoryInterpreter();
 
             //Assert
             Assert.That(tree.GetType(), Is.EqualTo(typeof(SetDifferenceNode)));
+            Assert.That(tree.ToString(), Is.EqualTo("{1,2,3} - {3,4,5}"));
         }
 
         [Test]
