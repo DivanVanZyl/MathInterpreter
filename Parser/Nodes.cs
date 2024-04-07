@@ -120,14 +120,21 @@ namespace Parser
 
         public override string ToString()
         {
-            string text = "{";
-            foreach (var s in _set)
+            if(_set.Count > 0)
             {
-                text += (s + ",");
+                string text = "{";
+                foreach (var s in _set)
+                {
+                    text += (s + ",");
+                }
+                text = text.Remove(text.Length - 1, 1);
+                text += "}";
+                return text;
             }
-            text = text.Remove(text.Length - 1, 1);
-            text += "}";
-            return text;
+            else
+            {
+                return "{}";
+            }
         }
     }
     public class UnionNode(Node node1, Node node2) : Node
